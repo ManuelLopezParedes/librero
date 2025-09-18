@@ -41,10 +41,17 @@ function actualizarAutor(autorID,autor){
   autorOriginal.FechaNacimiento = autor.FechaNacimiento
 }
 
-function obtenerID(autorID){
+function obtenerPorID(autorID){
   let autorOriginal = autores.find(x => x.ID == autorID);
   console.log(autorOriginal)
   console.log(autorID)
   return autorOriginal
 }
-module.exports = { obtenerAutores, agregarAutor, actualizarAutor, obtenerID };
+
+function borrarAutor(autorID){
+  let autorOriginal = autores.find(x => x.ID == autorID);
+  const indice = autores.indexOf(autorOriginal)
+  autores.splice(autorOriginal,1)
+}
+
+module.exports = { obtenerAutores, agregarAutor, actualizarAutor, obtenerPorID, borrarAutor };

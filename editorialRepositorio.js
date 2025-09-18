@@ -1,5 +1,4 @@
-function obtenerEditoriales(){
-    editorial = [
+editoriales = [
       {
         ID: 1,
         Nombre: "Roca",
@@ -26,7 +25,30 @@ function obtenerEditoriales(){
       },
     ];
 
-    return editorial
+function obtenerEditoriales(){
+  return editoriales
 }
 
-module.exports = {obtenerEditoriales}
+function obtenerPorId(editorialID){
+  const editorialOriginal = editoriales.find(x => x.ID == editorialID)
+  return editorialOriginal
+}
+
+function agregarEditorial(editorial){
+  editoriales.push(editorial)
+}
+
+function actualizarEditorial(editorialID,editorial){
+  const editorialOriginal = editoriales.find(x => x.ID == editorialID)
+  editorialOriginal.Nombre = editorial.Nombre
+  editorialOriginal.LugarFundacion = editorial.LugarFundacion
+  editorialOriginal.AñoFundacion = editorial.AñoFundacion
+}
+
+function borrarEditorial(editorialID){
+  const editorialOriginal = editoriales.find(x => x.ID == editorialID)
+  const indice = editoriales.indexOf(editorialOriginal)
+  editoriales.splice(indice,1)
+}
+
+module.exports = {obtenerEditoriales, obtenerPorId, agregarEditorial, actualizarEditorial, borrarEditorial}
